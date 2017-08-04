@@ -1,0 +1,28 @@
+{
+  "name": "testapp",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8080",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.10"
+  },
+  "scripts": {
+    "delete-static": "node src/scripts/deletestatic.js",
+    "copyfiles": "copyfiles -u 1 build/**/*.* webapp",
+    "build:css": "lessc src/index.less -x src/index.css",
+    "dev:css": "autoless --intervall 100 src src",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p dev:css start-js",
+    "build": "npm run delete-static && npm run build:css && react-scripts build && npm run copyfiles",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "autoless": "^0.1.7",
+    "copyfiles": "^1.2.0",
+    "less": "^2.7.2",
+    "npm-run-all": "^4.0.2"
+  }
+}
